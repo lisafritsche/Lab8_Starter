@@ -16,6 +16,4 @@ Service workers enable graceful degradation by allowing a web app to continue fu
 Note: The PWA was tested successfully, and the install button appeared. However, due to system administrator restrictions on my company's device, I could not complete the installation.
 
 ## Screenshot
-C:\Users\lisafritsche\Lab8_Starter\pwa1.png.png
-C:\Users\lisafritsche\Lab8_Starter\pwa2.png.png
-
+Uploaded in repo
