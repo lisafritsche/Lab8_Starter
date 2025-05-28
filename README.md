@@ -4,8 +4,10 @@ Network Requests, Service Workers, and PWA
 Lisa Fritsche (no partners)
 
 ## Deployed GitHub Pages URL
-*(Optional: Falls du es deployt hast, hier einfügen)*  
-z. B.: https://lisafritsche.github.io/Lab8_Starter/
+
+
+## Link to Website
+http://127.0.0.1:3002/index.html 
 
 ## Graceful Degradation & Service Workers
 
