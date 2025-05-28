@@ -33,6 +33,27 @@ async function init() {
  * of installing it and getting it running
  */
 function initializeServiceWorker() {
+  console.log('initializeServiceWorker called'); // Debug-Log 1
+
+  if ('serviceWorker' in navigator) {
+    console.log('Service Worker supported'); // Debug-Log 2
+
+    window.addEventListener('load', () => {
+      console.log('Window load event triggered'); // Debug-Log 3
+
+      navigator.serviceWorker.register('./sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope); // Debug-Log 4
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed:', error); // Debug-Log 5
+        });
+    });
+  } else {
+    console.warn('Service Workers are not supported in this browser.');
+  }
+
+
   // EXPLORE - START (All explore numbers start with B)
   /*******************/
   // ServiceWorkers have many uses, the most common of which is to manage
@@ -64,7 +85,34 @@ function initializeServiceWorker() {
  * array is saved to localStorage, and then the array is returned.
  * @returns {Array<Object>} An array of recipes found in localStorage
  */
+// Part 1 - Expose 
+
 async function getRecipes() {
+  let recipes = JSON.parse(localStorage.getItem('recipes'));
+
+  if (recipes) {
+    console.log('Recipes loaded from localStorage.');
+    return recipes;
+  }
+
+  console.log('No recipes in localStorage. Fetching from server...');
+  recipes = [];
+
+  try {
+    for (let url of RECIPE_URLS) {
+      const response = await fetch(url);
+      const recipe = await response.json();
+      recipes.push(recipe);
+    }
+    saveRecipesToStorage(recipes);
+    console.log('Recipes fetched and stored in localStorage.');
+    return recipes;
+  } catch (error) {
+    console.error('Error fetching recipes:', error);
+    throw error;
+  }
+
+  
   // EXPOSE - START (All expose numbers start with A)
   // A1. TODO - Check local storage to see if there are any recipes.
   //            If there are recipes, return them.
