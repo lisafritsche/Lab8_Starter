@@ -4,7 +4,7 @@ Network Requests, Service Workers, and PWA
 Lisa Fritsche (no partners)
 
 ## Deployed GitHub Pages URL
-
+https://github.com/lisafritsche/Lab8_Starter.git
 
 ## Link to Website
 http://127.0.0.1:3002/index.html 
